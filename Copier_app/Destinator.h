@@ -13,6 +13,8 @@ class Destinator
 
 		bool ready = false;
 
+		bool cmaker = false;
+
 		std::string getOrigin();
 		std::string getDestination();
 		void setOrigin(std::string input);

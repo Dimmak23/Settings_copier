@@ -2,19 +2,30 @@
 #include "./ui_interfacewidget.h"
 #include "Destinator.h"
 
-//#include <iostream>
+#include <QDebug>
+
 #include <fstream>
 #include <filesystem>
 #include <chrono>
 #include <ctime>
 #include <string>
-
-//Destinator set;
+#include <iostream>
 
 InterfaceWidget::InterfaceWidget(QWidget *parent):
 	QMainWindow(parent), ui(new Ui::InterfaceWidget)
 {
 	ui->setupUi(this);
+
+	ui->Orig_label->setText("Path of template source:");
+	ui->Dest_label->setText("Path of destination:");
+
+	ui->Option_error->setText("<font color='red'>ERROR: Choose (1) or (2) option</font>");
+	ui->Orig_error->setText("<font color='red'>ERROR: Choose origin folder</font>");
+	ui->Dest_error->setText("<font color='red'>ERROR: Choose destination folder</font>");
+
+	ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_12-1-0)");
+
+	getter.cmaker = false;
 }
 
 InterfaceWidget::~InterfaceWidget()
@@ -27,22 +38,30 @@ InterfaceWidget::~InterfaceWidget()
 //	qDebug() << "\nGetting unit: " << struct_object.unit;
 }
 
-void InterfaceWidget::pressedSubmit()
+void InterfaceWidget::on_submit_clicked()
 {
-
-	//set.setOrigin(ui->lineEdit->text().toStdString());
-	//set.setDestination(ui->lineEdit_2->text().toStdString());
-	//set.ready = true;
 
 	//std::cout << "Enter here origin of NEWEST \".vscode\" json's versions: ";
 
 	std::string origin {};
-	origin = ui->lineEdit->text().toStdString();
-	origin += R"(\.vscode)";
+	origin = ui->Orig_entry->text().toStdString();
+
+	if (!(getter.cmaker)) origin += R"(\.vscode)";
 
 	//std::cout << "Enter here destination to paste: ";
 	std::string destination {};
-	destination = ui->lineEdit_2->text().toStdString();
+	std::string project {};
+
+	destination = ui->Dest_entry->text().toStdString();
+
+	if (getter.cmaker)
+	{
+		const auto position =destination.find_last_of('\\');
+		project = destination.substr(position);
+		std::cout << "project: " << project <<'\n';
+		destination = destination.substr(0, destination.size()-project.size());
+		std::cout << "destination: " << destination <<'\n';
+	}
 
 	//create path to .vscode before create .vscode itself!
 	std::filesystem::create_directories(destination);
@@ -51,7 +70,11 @@ void InterfaceWidget::pressedSubmit()
 							 | std::filesystem::copy_options::recursive;
 
 	//With copy_options::recursive, the subdirectories are also copied, with their content, recursively.
-	destination += R"(\.vscode)";
+	if (!(getter.cmaker)) destination += R"(\.vscode)";
+	else destination += project;
+
+	std::cout << "destination: " << destination <<'\n';
+
 	std::filesystem::copy(origin, destination, copyOptions);
 
 	std::ofstream log_file;
@@ -69,3 +92,49 @@ void InterfaceWidget::pressedSubmit()
 	log_file.close();
 
 }
+
+void InterfaceWidget::on_ucrtNew_clicked()
+{
+	if(ui->ucrtNew->isChecked())
+	{
+		ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_12-1-0)");
+	}
+	getter.cmaker = false;
+}
+
+void InterfaceWidget::on_ucrtOld_clicked()
+{
+	if(ui->ucrtOld->isChecked())
+	{
+		ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_11-3-0)");
+	}
+	getter.cmaker = false;
+}
+
+void InterfaceWidget::on_WxWidgets_clicked()
+{
+	if(ui->WxWidgets->isChecked())
+	{
+		ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Frameworks\wxWidgets\VSCODE_CMAKE)");
+	}
+	getter.cmaker = true;
+}
+
+void InterfaceWidget::on_Qt_clicked()
+{
+	if(ui->Qt->isChecked())
+	{
+		ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Frameworks\Qt\VSCODE_CMAKE)");
+	}
+	getter.cmaker = true;
+}
+
+void InterfaceWidget::on_OpenGL_clicked()
+{
+	if(ui->OpenGL->isChecked())
+	{
+		ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Frameworks\OpenGL\VSCODE_CMAKE)");
+	}
+	getter.cmaker = true;
+}
+
