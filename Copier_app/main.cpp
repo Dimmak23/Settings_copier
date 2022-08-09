@@ -1,5 +1,5 @@
 #include "interfacewidget.h"
-//#include "Destinator.h"
+#include "Destinator.h"
 
 #include <iostream>
 #include <fstream>
@@ -9,26 +9,19 @@
 #include <string>
 
 #include <QApplication>
-#include <QLocale>
-#include <QTranslator>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
+//	testing struct_object;
+//	struct_object.unit = 12;
 
-    QApplication a(argc, argv);
+//	qDebug() << "Getting unit: " << struct_object.unit;
 
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "Copier_app_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
-            break;
-        }
-    }
+	QApplication a(argc, argv);
 
-    InterfaceWidget w;
-    w.show();
+	InterfaceWidget w;
+	w.show();
 
-    return a.exec();
+	return a.exec();
 }

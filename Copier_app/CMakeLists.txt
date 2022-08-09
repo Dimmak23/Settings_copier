@@ -17,13 +17,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 set(TS_FILES Copier_app_en_150.ts)
 
 set(PROJECT_SOURCES
-        main.cpp
-		Destinator.cpp
-		Destinator.h
-        interfacewidget.cpp
-        interfacewidget.h
-        interfacewidget.ui
-        ${TS_FILES}
+	main.cpp
+	Destinator.cpp
+	Destinator.h
+	interfacewidget.cpp
+	interfacewidget.h
+	interfacewidget.ui
+	${TS_FILES}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

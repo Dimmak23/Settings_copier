@@ -7,19 +7,19 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class InterfaceWidget; }
 QT_END_NAMESPACE
 
-class InterfaceWidget : public QMainWindow
+class InterfaceWidget: public QMainWindow
 {
-    Q_OBJECT
+		Q_OBJECT
 
-public:
-    InterfaceWidget(QWidget *parent = nullptr);
-    ~InterfaceWidget();
+	public:
+		InterfaceWidget(QWidget *parent = nullptr);
+		~InterfaceWidget();
 
-private slots:
-    void on_pushButton_clicked();
+	private slots:
+		void pressedSubmit();
 
-private:
-    Ui::InterfaceWidget *ui;
+	private:
+		Ui::InterfaceWidget *ui;
 };
 
 #endif // INTERFACEWIDGET_H
