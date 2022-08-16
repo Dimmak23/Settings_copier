@@ -12,12 +12,13 @@
 #include <iostream>
 
 InterfaceWidget::InterfaceWidget(QWidget *parent):
-	QMainWindow(parent), ui(new Ui::InterfaceWidget)
+	QMainWindow(parent), ui(new Ui::InterfaceWidget),
+	defaultMessage("Application designed and produced by DimmaK, 10 august 2022, all rights reserved.")
 {
 	ui->setupUi(this);
 
-	ui->Orig_label->setText("Path of template source:");
-	ui->Dest_label->setText("Path of destination:");
+	ui->Orig_label->setText("Path to template source:");
+	ui->Dest_label->setText("Path to destination:");
 
 	ui->Option_error->setText("<font color='red'>ERROR: Choose (1) or (2) option</font>");
 	ui->Orig_error->setText("<font color='red'>ERROR: Choose origin folder</font>");
@@ -26,6 +27,8 @@ InterfaceWidget::InterfaceWidget(QWidget *parent):
 	ui->Orig_entry->setText(R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_12-1-0)");
 
 	getter.cmaker = false;
+
+	ui->statusbar->showMessage(this->defaultMessage);
 }
 
 InterfaceWidget::~InterfaceWidget()
@@ -138,3 +141,12 @@ void InterfaceWidget::on_OpenGL_clicked()
 	getter.cmaker = true;
 }
 
+void InterfaceWidget::on_DotNet_clicked()
+{
+
+//	if(ui->DotNet->isChecked())
+//	{
+		ui->Orig_entry->setText(R"(D:\CSHARP\Project_templates\Compilers\VSCODE\DOTNET)");
+//	}
+	getter.cmaker = false;
+}

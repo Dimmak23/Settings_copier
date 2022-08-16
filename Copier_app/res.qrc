@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/resource_f">
+        <file>resources/cpp_icon.ico</file>
+        <file>resources/cs_icon.ico</file>
+        <file>resources/cmake_icon.ico</file>
+        <file>resources/dotnet_icon.ico</file>
+        <file>resources/vscode_icon.ico</file>
+    </qresource>
+</RCC>

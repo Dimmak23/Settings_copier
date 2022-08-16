@@ -32,11 +32,15 @@ class InterfaceWidget: public QMainWindow
 
 		void on_OpenGL_clicked();
 
+		void on_DotNet_clicked();
+
 	private:
 
 		Ui::InterfaceWidget *ui;
 
 		Destinator getter;
+
+		const QString defaultMessage;
 };
 
 #endif // INTERFACEWIDGET_H
