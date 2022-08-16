@@ -1,5 +1,5 @@
 #include "interfacewidget.h"
-#include "Destinator.h"
+//#include "Destinator.h"
 
 #include <iostream>
 #include <fstream>
@@ -13,11 +13,6 @@
 
 int main(int argc, char *argv[])
 {
-//	testing struct_object;
-//	struct_object.unit = 12;
-
-//	qDebug() << "Getting unit: " << struct_object.unit;
-
 	QApplication a(argc, argv);
 
 	InterfaceWidget w;

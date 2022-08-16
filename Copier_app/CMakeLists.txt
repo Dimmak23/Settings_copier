@@ -29,6 +29,10 @@ set(PROJECT_SOURCES
 	${APP_ICON_WIN}
 )
 
+qt_add_resources(PROJECT_SOURCES
+	res.qrc
+)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 	qt_add_executable(Copier_app
 		MANUAL_FINALIZATION
