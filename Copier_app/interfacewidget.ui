@@ -527,7 +527,7 @@
           <x>10</x>
           <y>10</y>
           <width>461</width>
-          <height>51</height>
+          <height>52</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_5">
@@ -551,6 +551,9 @@
            </property>
            <property name="text">
             <string>UCRT pack 11.3.0 (GCC 11.3.0, Clang 14.0.3, MSVC 19.32)</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -579,7 +582,7 @@
           <x>10</x>
           <y>10</y>
           <width>461</width>
-          <height>71</height>
+          <height>80</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout">
@@ -676,8 +679,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>511</width>
-         <height>71</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -686,6 +689,17 @@
       </widget>
      </widget>
     </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>2</width>
+      <height>2</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2"/>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar">

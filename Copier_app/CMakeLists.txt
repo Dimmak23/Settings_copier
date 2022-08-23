@@ -25,6 +25,7 @@ set(PROJECT_SOURCES
 	interfacewidget.cpp
 	interfacewidget.h
 	interfacewidget.ui
+	ConstantsUtil.h
 	${TS_FILES}
 	${APP_ICON_WIN}
 )

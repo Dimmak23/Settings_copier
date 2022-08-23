@@ -2,7 +2,10 @@
 #define INTERFACEWIDGET_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QFont>
 #include "Destinator.h"
+#include "ConstantsUtil.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class InterfaceWidget; }
@@ -34,6 +37,12 @@ class InterfaceWidget: public QMainWindow
 
 		void on_DotNet_clicked();
 
+		void on_vscode_copy_clicked();
+
+		void on_folder_copy_clicked();
+
+		void on_Orig_entry_editingFinished();
+
 	private:
 
 		Ui::InterfaceWidget *ui;
@@ -41,6 +50,11 @@ class InterfaceWidget: public QMainWindow
 		Destinator getter;
 
 		const QString defaultMessage;
+
+		QMessageBox *SuccessSubmit = new QMessageBox(this);
+		QMessageBox *PathError = new QMessageBox(this);
+
+//		QFont messages;
 };
 
 #endif // INTERFACEWIDGET_H
