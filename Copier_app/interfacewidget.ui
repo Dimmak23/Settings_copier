@@ -76,24 +76,6 @@
      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="submit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>640</y>
-      <width>181</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Roboto</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>Submit</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
@@ -103,7 +85,7 @@
       <height>31</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="origin_layout">
+    <layout class="QFormLayout" name="origin_form_layout">
      <property name="labelAlignment">
       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
      </property>
@@ -232,7 +214,7 @@
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
-        <string>(2) copy entire folder and subfolders from there?</string>
+        <string>(2) copy all files and subfolders from there?</string>
        </property>
       </widget>
      </item>
@@ -530,7 +512,7 @@
           <height>52</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="formLayout_5">
+        <layout class="QFormLayout" name="CPP_VSCode_form">
          <item row="0" column="0">
           <widget class="QRadioButton" name="ucrtNew">
            <property name="cursor">
@@ -585,7 +567,7 @@
           <height>80</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="formLayout">
+        <layout class="QFormLayout" name="CPP_Cmake_form">
          <item row="0" column="0">
           <widget class="QRadioButton" name="WxWidgets">
            <property name="cursor">
@@ -690,16 +672,51 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="formLayoutWidget_6">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>2</width>
-      <height>2</height>
+      <x>20</x>
+      <y>640</y>
+      <width>531</width>
+      <height>26</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="formLayout_2"/>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="submit">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Roboto</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Submit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="eventProgress">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar">
