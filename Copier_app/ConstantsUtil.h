@@ -32,8 +32,11 @@ namespace LabelsDescriptions {
 	inline const QString Orig_label = "Path to template source:";
 	inline const QString Dest_label = "Path to destination:";
 	inline const QString Option_error = "<font color='red'>ERROR: Choose (1) or (2) option</font>";
-	inline const QString Orig_error = "<font color='red'>ERROR: Choose correct origin folder</font>";
-	inline const QString Dest_error = "<font color='red'>ERROR: Choose destination folder</font>";
+	inline const QString Orig_error = "<font color='red'>ERROR: Choose the correct origin path</font>";
+	inline const QString Orig_folder_spec = "<font color='red'>ERROR: Choose the name of the origin folder</font>";
+	inline const QString Dest_error = "<font color='red'>ERROR: Choose correct destination path</font>";
+	inline const QString Dest_folder_spec = "<font color='red'>ERROR: Choose the name of the project folder</font>";
+	inline const QString Dest_folder_res = "<font color='green'>Creating project with the name: </font>";
 
 }
 
@@ -50,6 +53,8 @@ namespace Notificatios {
 	inline const QString PathErrorTitle = "ERROR";
 	inline const QString PathErrorLabel = R"(<span style=" font-size: 12pt; font-weight: 800; color: red;">Project with such name already exist!</span>)";
 	inline const QString PathErrorMessage = R"(<span style=" font-size: 10pt; font-weight: 600; color: red;">Advice: Please choose another name for the project.</span>)";
+	inline const QString DestIncompleateLabel = R"(<span style=" font-size: 12pt; font-weight: 800; color: red;">Incorrect path...</span>)";
+	inline const QString DestIncompleateMessage = R"(<span style=" font-size: 10pt; font-weight: 600; color: red;">Advice: Please start path with this pattern: [Disk_Name]:\[Main_Folder]\[Inner_Folder]\...\Project_Name</span>)";
 
 }
 

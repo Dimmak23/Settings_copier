@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QFont>
 #include "Destinator.h"
-#include "ConstantsUtil.h"
+//#include "ConstantsUtil.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class InterfaceWidget; }
@@ -18,30 +18,25 @@ class InterfaceWidget: public QMainWindow
 	public:
 
 		InterfaceWidget(QWidget *parent = nullptr);
-
 		~InterfaceWidget();
 
 	private slots:
-		//TODO-1: fix this on_<signal>_<privateslot>
-		void on_submit_clicked();
+		void mainEvent();
+		void defaultCopying(const QString &path, const bool &cmake);
+		void customCopying(const bool &cmake);
+		void checkOrigin();
+		void checkDestination();
 
-		void on_ucrtNew_clicked();
-
-		void on_ucrtOld_clicked();
-
-		void on_WxWidgets_clicked();
-
-		void on_Qt_clicked();
-
-		void on_OpenGL_clicked();
-
-		void on_DotNet_clicked();
-
-		void on_vscode_copy_clicked();
-
-		void on_folder_copy_clicked();
-
-		void on_Orig_entry_editingFinished();
+//		void on_ucrtNew_clicked();
+//		void on_ucrtOld_clicked();
+//		void on_WxWidgets_clicked();
+//		void on_Qt_clicked();
+//		void on_OpenGL_clicked();
+//		void on_DotNet_clicked();
+//		void on_vscode_copy_clicked();
+//		void on_folder_copy_clicked();
+//		void on_Orig_entry_editingFinished();
+//		void on_Dest_entry_editingFinished();
 
 	private:
 
@@ -53,6 +48,7 @@ class InterfaceWidget: public QMainWindow
 
 		QMessageBox *SuccessSubmit = new QMessageBox(this);
 		QMessageBox *PathError = new QMessageBox(this);
+		QMessageBox *DestIncompleate = new QMessageBox(this);
 
 //		QFont messages;
 };
