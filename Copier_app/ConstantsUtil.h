@@ -54,7 +54,8 @@ namespace Notificatios {
 	inline const QString PathErrorLabel = R"(<span style=" font-size: 12pt; font-weight: 800; color: red;">Project with such name already exist!</span>)";
 	inline const QString PathErrorMessage = R"(<span style=" font-size: 10pt; font-weight: 600; color: red;">Advice: Please choose another name for the project.</span>)";
 	inline const QString DestIncompleateLabel = R"(<span style=" font-size: 12pt; font-weight: 800; color: red;">Incorrect path...</span>)";
-	inline const QString DestIncompleateMessage = R"(<span style=" font-size: 10pt; font-weight: 600; color: red;">Advice: Please start path with this pattern: [Disk_Name]:\[Main_Folder]\[Inner_Folder]\...\Project_Name</span>)";
+	inline const QString DestIncompleateMessage = R"(<span style=" text-width: 400px; font-size: 10pt; font-weight: 600; color: red;">Advice: Please follow information in the details<span>)";
+	inline const QString DestDetMessage = "Please start path with this pattern:\n[Disk_Name]:\\[Main_Folder]\\[Inner_Folder]\\...\\[Project_Name]";
 
 }
 

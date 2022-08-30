@@ -5,7 +5,11 @@
 #include "checkers.h"
 
 #include <QDebug>
+#include <QLabel>
 #include <QMessageBox>
+#include <QLayout>
+#include <QSizePolicy>
+#include <QGridLayout>
 
 #include <fstream>
 #include <filesystem>
@@ -52,24 +56,38 @@ InterfaceWidget::InterfaceWidget(QWidget *parent):
 	//TODO-3_1: Implement user defined Message Icon for Success
 //	SuccessSubmit->setIconPixmap();
 
+	PathError = new QMessageBox(this);
+//	PathError->setMinimumSize(500, 200);
 	PathError->setWindowTitle(Notificatios::PathErrorTitle);
 	PathError->setText(Notificatios::PathErrorLabel);
 	PathError->setInformativeText(Notificatios::PathErrorMessage);
 	PathError->setStandardButtons(QMessageBox::Ok);
-	PathError->setDefaultButton(QMessageBox::Ok);
+//	PathError->setDefaultButton(QMessageBox::Ok);
 	PathError->setTextFormat(Qt::RichText);
 	PathError->setIcon(QMessageBox::Critical);
 	//TODO-3_2: Implement user defined Message Icon for Errors
 	//	PathError->setIconPixmap();
 
+	DestIncompleate = new QMessageBox(this);
+//	DestIncompleate->setMinimumSize(500, 500); //don't work
+//	DestIncompleate->setMaximumSize(900, 900); //don't work
+//	DestIncompleate->setFixedSize(500, 500); //don't work
 	DestIncompleate->setWindowTitle(Notificatios::PathErrorTitle);
 	DestIncompleate->setText(Notificatios::DestIncompleateLabel);
 	DestIncompleate->setInformativeText(Notificatios::DestIncompleateMessage);
+	DestIncompleate->setDetailedText(Notificatios::DestDetMessage);
+//	DestIncompleate->setStyleSheet(
+//				"QLabel{ min-width: 750px; }"
+//				);
 	DestIncompleate->setStandardButtons(QMessageBox::Ok);
-	DestIncompleate->setDefaultButton(QMessageBox::Ok);
+//	DestIncompleate->setDefaultButton(QMessageBox::Ok);
 	DestIncompleate->setTextFormat(Qt::RichText);
 	DestIncompleate->setIcon(QMessageBox::Critical);
-//	DestIncompleate->setStyleSheet("QLabel{min-width: 200px;}");
+//	DestIncompleate->adjustSize(); //don't work
+
+	QSpacerItem* horizontalSpacer = new QSpacerItem(400, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+	QGridLayout* layout = (QGridLayout*)DestIncompleate->layout();
+	layout->addItem(horizontalSpacer, layout->rowCount(), 0, 1, layout->columnCount());
 
 	//Functor-based lambda connection for the submit button with mainEvent() method
 	connect(
@@ -146,6 +164,26 @@ InterfaceWidget::InterfaceWidget(QWidget *parent):
 		InterfaceWidget::checkDestination();
 	}
 	);
+
+	//Setting up a shortcut sequence to execute copy operations
+	submitShortcut = new QShortcut(QKeySequence("Ctrl+Return"), this);
+	//Connect to the mainEvent() method
+	connect(
+				this->submitShortcut,
+				&QShortcut::activated,
+				this,
+				&InterfaceWidget::mainEvent
+				);
+
+	//Setting up a shortcut sequence to leave application
+	exitShortCut = new QShortcut(QKeySequence("Ctrl+Del"), this);
+	connect(
+				this->exitShortCut,
+				&QShortcut::activated,
+				this,
+				&InterfaceWidget::close
+				);
+
 }
 
 InterfaceWidget::~InterfaceWidget()
@@ -156,8 +194,6 @@ InterfaceWidget::~InterfaceWidget()
 	delete ui;
 }
 
-//TODO-2: Implement invokation of the Submit button by shortcut keys,
-//        for example "Ctrl+Enter"
 void InterfaceWidget::mainEvent()
 {
 	ui->eventProgress->setValue(5);
@@ -237,12 +273,15 @@ void InterfaceWidget::mainEvent()
 		int err = DestIncompleate->exec();
 		//Collect response from user about current success
 		if (err == QMessageBox::Ok) DestIncompleate->close();
+
 		//Clear entry of destination path
 		ui->Dest_entry->setText("");
 
 		getter.error_caught = true;
 
 		ui->eventProgress->setValue(0);
+
+
 	}
 	catch (const std::exception &error)
 	{
@@ -312,6 +351,11 @@ void InterfaceWidget::customCopying(const bool &cmake)
 {
 	ui->Option_error->setText("");
 	getter.cmaker = cmake;
+}
+
+QSize InterfaceWidget::sizeHint() const
+{
+	return QSize(560, 700);
 }
 
 //void InterfaceWidget::on_ucrtNew_clicked()

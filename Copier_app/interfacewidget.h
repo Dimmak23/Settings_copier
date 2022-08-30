@@ -6,6 +6,7 @@
 #include <QFont>
 #include "Destinator.h"
 //#include "ConstantsUtil.h"
+#include <QShortcut>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class InterfaceWidget; }
@@ -47,8 +48,12 @@ class InterfaceWidget: public QMainWindow
 		const QString defaultMessage;
 
 		QMessageBox *SuccessSubmit = new QMessageBox(this);
-		QMessageBox *PathError = new QMessageBox(this);
-		QMessageBox *DestIncompleate = new QMessageBox(this);
+		QMessageBox *PathError;
+		QMessageBox *DestIncompleate;
+		QShortcut *submitShortcut;
+		QShortcut *exitShortCut;
+
+		QSize sizeHint() const;
 
 //		QFont messages;
 };

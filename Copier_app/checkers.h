@@ -7,6 +7,8 @@
 
 class InterfaceWidget;
 
+//TODO-2: Difirentiate errors from checkOrigin() and from checkDestination()
+
 void InterfaceWidget::checkOrigin()
 {
 	ui->Orig_error->setText("");
