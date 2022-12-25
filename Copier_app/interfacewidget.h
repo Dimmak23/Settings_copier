@@ -1,5 +1,4 @@
-#ifndef INTERFACEWIDGET_H
-#define INTERFACEWIDGET_H
+#pragma once
 
 #include <QMainWindow>
 #include <QMessageBox>
@@ -9,53 +8,52 @@
 #include <QShortcut>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class InterfaceWidget; }
+namespace Ui
+{
+class InterfaceWidget;
+}
 QT_END_NAMESPACE
 
-class InterfaceWidget: public QMainWindow
+class InterfaceWidget : public QMainWindow
 {
-		Q_OBJECT
+	Q_OBJECT
 
-	public:
+public:
+	InterfaceWidget(QWidget* parent = nullptr);
+	~InterfaceWidget();
 
-		InterfaceWidget(QWidget *parent = nullptr);
-		~InterfaceWidget();
+private slots:
+	void mainEvent();
+	void defaultCopying(const QString& path, const bool& cmake);
+	void customCopying(const bool& cmake);
+	void checkOrigin();
+	void checkDestination();
 
-	private slots:
-		void mainEvent();
-		void defaultCopying(const QString &path, const bool &cmake);
-		void customCopying(const bool &cmake);
-		void checkOrigin();
-		void checkDestination();
+	//		void on_ucrtNew_clicked();
+	//		void on_ucrtOld_clicked();
+	//		void on_WxWidgets_clicked();
+	//		void on_Qt_clicked();
+	//		void on_OpenGL_clicked();
+	//		void on_DotNet_clicked();
+	//		void on_vscode_copy_clicked();
+	//		void on_folder_copy_clicked();
+	//		void on_Orig_entry_editingFinished();
+	//		void on_Dest_entry_editingFinished();
 
-//		void on_ucrtNew_clicked();
-//		void on_ucrtOld_clicked();
-//		void on_WxWidgets_clicked();
-//		void on_Qt_clicked();
-//		void on_OpenGL_clicked();
-//		void on_DotNet_clicked();
-//		void on_vscode_copy_clicked();
-//		void on_folder_copy_clicked();
-//		void on_Orig_entry_editingFinished();
-//		void on_Dest_entry_editingFinished();
+private:
+	Ui::InterfaceWidget* ui;
 
-	private:
+	Destinator getter;
 
-		Ui::InterfaceWidget *ui;
+	const QString defaultMessage;
 
-		Destinator getter;
+	QMessageBox* SuccessSubmit = new QMessageBox(this);
+	QMessageBox* PathError;
+	QMessageBox* DestIncompleate;
+	QShortcut* submitShortcut;
+	QShortcut* exitShortCut;
 
-		const QString defaultMessage;
+	QSize sizeHint() const;
 
-		QMessageBox *SuccessSubmit = new QMessageBox(this);
-		QMessageBox *PathError;
-		QMessageBox *DestIncompleate;
-		QShortcut *submitShortcut;
-		QShortcut *exitShortCut;
-
-		QSize sizeHint() const;
-
-//		QFont messages;
+	//		QFont messages;
 };
-
-#endif // INTERFACEWIDGET_H

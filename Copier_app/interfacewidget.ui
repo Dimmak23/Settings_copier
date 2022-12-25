@@ -491,7 +491,7 @@
        <enum>QFrame::Raised</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="cpp_VSCode">
        <property name="geometry">
@@ -499,7 +499,7 @@
          <x>0</x>
          <y>0</y>
          <width>501</width>
-         <height>91</height>
+         <height>61</height>
         </rect>
        </property>
        <attribute name="icon">
@@ -554,7 +554,7 @@
          <x>0</x>
          <y>0</y>
          <width>501</width>
-         <height>91</height>
+         <height>61</height>
         </rect>
        </property>
        <attribute name="icon">
@@ -606,6 +606,11 @@
          </item>
         </layout>
        </widget>
+      </widget>
+      <widget class="QWidget" name="cpp_Makefile">
+       <attribute name="label">
+        <string>Page</string>
+       </attribute>
       </widget>
      </widget>
     </widget>
@@ -667,8 +672,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>98</width>
-         <height>28</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
