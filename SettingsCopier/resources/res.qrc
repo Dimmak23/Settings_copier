@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/tabicons">
+        <file>images/cmake_icon.ico</file>
+        <file>images/cpp_icon.ico</file>
+        <file>images/cs_icon.ico</file>
+        <file>images/vscode_icon.ico</file>
+        <file>images/cmake_LR_icon.ico</file>
+        <file>images/python_icon.ico</file>
+        <file>images/qcreator_icon.ico</file>
+        <file>images/dotnet_LR_icon.ico</file>
+        <file>images/make_icon.ico</file>
+    </qresource>
+    <qresource prefix="/pathicons">
+        <file>images/searcher_icon.ico</file>
+    </qresource>
+</RCC>
