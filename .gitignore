@@ -1,7 +1,0 @@
-.gitignore
-.gitattributes
-Build
-*.user
-chatgpt_*.MD
-manual_*.MD
-stackoverflow_*.MD
