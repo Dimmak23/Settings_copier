@@ -55,7 +55,7 @@ namespace CPP
 		TOOLS_QTY,	  // needed end of enumerator
 
 		VSCODE_RBUTTONS = 2,
-		CMAKE_RBUTTONS = 3,
+		CMAKE_RBUTTONS = 4,
 		MAKEFILE_RBUTTONS = 2,
 		QT_CREATOR_RBUTTONS = 3,
 		RADIO_BUTTONS_TREE_NODES = VSCODE_RBUTTONS + CMAKE_RBUTTONS + MAKEFILE_RBUTTONS + QT_CREATOR_RBUTTONS
@@ -96,6 +96,7 @@ namespace RBUTTONS
 	{
 		VSCODE_NEW,
 		VSCODE_OLD,
+		CMAKE_GT,
 		CMAKE_WX,
 		CMAKE_QT,
 		CMAKE_OGL,
@@ -159,6 +160,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, cmakeToolLabel, ("Copy CMake build lists and 
 Q_GLOBAL_STATIC_WITH_ARGS(QString, cmakeToolTip,
 						  ("Prepare to build your project with some framework or library with CMake"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, cmakeToolIcon, (":tabicons/images/cmake_LR_icon.ico"))
+Q_GLOBAL_STATIC_WITH_ARGS(QString, gTestsLabel, ("No frameworks, custom headers and unit testing (googletest)"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, wxRadioLabel, ("wxWidgets 3.2 framework"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, qtvscodeRadioLabel, ("Qt 6.4.1 framework"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oglRadioLabel, ("Open GL 4.5 library"))
@@ -224,6 +226,8 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, mFile, ("Makefile"))
 //						  (R"(C:\Project_templates\CPP_project_templates\Compilers\VSCODE\UCRT_12-1-0)"))
 // Q_GLOBAL_STATIC_WITH_ARGS(QString, oldURadioPath,
 //						  (R"(C:\Project_templates\CPP_project_templates\Compilers\VSCODE\UCRT_11-3-0)"))
+// Q_GLOBAL_STATIC_WITH_ARGS(QString, gTests,
+//						  (R"(C:\Project_templates\CPP_project_templates\Tests\gTests\VSCODE_CMAKE)"))
 // Q_GLOBAL_STATIC_WITH_ARGS(QString, wxRadioPath,
 //						  (R"(C:\Project_templates\CPP_project_templates\Frameworks\wxWidgets\VSCODE_CMAKE)"))
 // Q_GLOBAL_STATIC_WITH_ARGS(QString, qtvscodeRadioPath,
@@ -243,6 +247,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, mFile, ("Makefile"))
 
 Q_GLOBAL_STATIC_WITH_ARGS(QString, newURadioPath, (R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_12-1-0)"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oldURadioPath, (R"(D:\CPP\Projects_templates\Compilers\VSCODE\UCRT_11-3-0)"))
+Q_GLOBAL_STATIC_WITH_ARGS(QString, gTests, (R"(D:\CPP\Projects_templates\Tests\gTests\VSCODE_CMAKE)"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, wxRadioPath, (R"(D:\CPP\Projects_templates\Frameworks\wxWidgets\VSCODE_CMAKE)"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, qtvscodeRadioPath, (R"(D:\CPP\Projects_templates\Frameworks\Qt\VSCODE_CMAKE)"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oglRadioPath, (R"(D:\CPP\Projects_templates\Frameworks\OpenGL\VSCODE_CMAKE)"))
@@ -260,6 +265,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, hm, (R"(D:\)"))
 
 Q_GLOBAL_STATIC_WITH_ARGS(QString, newURadioStatus, ("[C++ Tab][VSCode Tool]: New compiler have chosen"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oldURadioStatus, ("[C++ Tab][VSCode Tool]: Old compiler have chosen"))
+Q_GLOBAL_STATIC_WITH_ARGS(QString, gTestsStatus, ("[C++ Tab][CMake Tool]: Unit testing (googletest) have chosen"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, wxRadioStatus, ("[C++ Tab][CMake Tool]: wxWidgets framework have chosen"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, qtvscodeRadioStatus, ("[C++ Tab][CMake Tool]: Qt framework have chosen"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oglRadioStatus, ("[C++ Tab][CMake Tool]: OpenGL library have chosen"))
@@ -277,7 +283,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, mfs, ("[Line Editors][Source path]: \"Makefil
 
 Q_GLOBAL_STATIC_WITH_ARGS(QString, submitB, ("Submit"))
 
-Q_GLOBAL_STATIC_WITH_ARGS(QSize, mw, (560, 760))
+Q_GLOBAL_STATIC_WITH_ARGS(QSize, mw, (560, 780))
 Q_GLOBAL_STATIC_WITH_ARGS(QSize, pu, (540, 280))
 Q_GLOBAL_STATIC_WITH_ARGS(QSize, ti, (32, 32))
 
@@ -305,9 +311,10 @@ namespace QSTRINGS
 														 *qtcreatorToolTip(), *qtcreatorToolTip(), *csvsToolTip(),
 														 *pyvsToolTip() };
 	inline const std::vector<QString> tabletRButtonsLabels = {
-		*newURadioLabel(),		 *oldURadioLabel(),		  *wxRadioLabel(),	 *qtvscodeRadioLabel(),
-		*oglRadioLabel(),		 *sfmlRadioLabel(),		  *sdlRadioLabel(),	 *qtcreatorRadioLabel(),
-		*qmlcreatorRadioLabel(), *allcreatorRadioLabel(), *dnetRadioLabel(), *pyvscodeRadioLabel()
+		*newURadioLabel(),		*oldURadioLabel(),		 *gTestsLabel(),		  *wxRadioLabel(),
+		*qtvscodeRadioLabel(),	*oglRadioLabel(),		 *sfmlRadioLabel(),		  *sdlRadioLabel(),
+		*qtcreatorRadioLabel(), *qmlcreatorRadioLabel(), *allcreatorRadioLabel(), *dnetRadioLabel(),
+		*pyvscodeRadioLabel()
 	};
 
 	static inline const QString& sourcePathLabel = *sourcePL();
@@ -355,9 +362,9 @@ namespace STRINGS
 namespace QPATHS
 {
 	inline const std::vector<QString> rbuttons = {
-		*newURadioPath(),		*oldURadioPath(),		*wxRadioPath(),	  *qtvscodeRadioPath(),
-		*oglRadioPath(),		*sfmlRadioPath(),		*sdlRadioPath(),  *qtcreatorRadioPath(),
-		*qmlcreatorRadioPath(), *allcreatorRadioPath(), *dnetRadioPath(), *pyvscodeRadioPath()
+		*newURadioPath(),		*oldURadioPath(), *gTests(),		   *wxRadioPath(),		  *qtvscodeRadioPath(),
+		*oglRadioPath(),		*sfmlRadioPath(), *sdlRadioPath(),	   *qtcreatorRadioPath(), *qmlcreatorRadioPath(),
+		*allcreatorRadioPath(), *dnetRadioPath(), *pyvscodeRadioPath()
 	};
 
 	static inline const QString& home = *hm();
@@ -366,9 +373,10 @@ namespace QPATHS
 namespace QSTATUSES
 {
 	inline const std::vector<QString> rbuttons = {
-		*newURadioStatus(),		  *oldURadioStatus(),		*wxRadioStatus(),	*qtvscodeRadioStatus(),
-		*oglRadioStatus(),		  *sfmlRadioStatus(),		*sdlRadioStatus(),	*qtcreatorRadioStatus(),
-		*qmlcreatorRadioStatus(), *allcreatorRadioStatus(), *dnetRadioStatus(), *pyvscodeRadioStatus()
+		*newURadioStatus(),		 *oldURadioStatus(),	   *gTestsStatus(),			 *wxRadioStatus(),
+		*qtvscodeRadioStatus(),	 *oglRadioStatus(),		   *sfmlRadioStatus(),		 *sdlRadioStatus(),
+		*qtcreatorRadioStatus(), *qmlcreatorRadioStatus(), *allcreatorRadioStatus(), *dnetRadioStatus(),
+		*pyvscodeRadioStatus()
 	};
 
 	static inline const QString& vsStatus = *vss();

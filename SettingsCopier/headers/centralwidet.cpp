@@ -188,6 +188,7 @@ void CentralWidet::mainConnector()
 					enabler();
 					break;
 				}
+				case RBUTTONS::CMAKE_GT:
 				case RBUTTONS::CMAKE_WX:
 				case RBUTTONS::CMAKE_QT:
 				case RBUTTONS::CMAKE_OGL: {

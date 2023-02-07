@@ -28,7 +28,7 @@ set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 set(HEADERS_DIR "${CMAKE_SOURCE_DIR}/headers")
 set(RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
 
-include_directories(${SOURCE_DIR})
+include_directories(${SRC_DIR})
 include_directories(${HEADERS_DIR})
 include_directories(${RESOURCE_DIR})
 

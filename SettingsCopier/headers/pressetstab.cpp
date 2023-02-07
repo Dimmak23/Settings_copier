@@ -94,7 +94,7 @@ void PressetsTab::setUIStyle()
 		// End of stylesheet
 	);
 	// Prevent expanding and moving objects bellow
-	this->setFixedHeight(270);
+	this->setFixedHeight(290);
 	// set sizes of tab icons
 	this->setIconSize(QSIZES::tabIcon);
 }
