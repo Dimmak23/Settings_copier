@@ -102,6 +102,10 @@ void Popup::setInformativeText(const short& projectType, const QString& source, 
 			*informativeText += "Python project ";
 			break;
 		}
+		case RBUTTONS::CMAKE_GT: {
+			*informativeText += "C++ unit testing project\n";
+			break;
+		}
 		case RBUTTONS::CMAKE_WX: {
 			*informativeText += "C++, wxWidgets 3.2 framework project\n";
 			break;
