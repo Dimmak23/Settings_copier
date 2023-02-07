@@ -149,7 +149,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, qm, ("Do you want to setup another project?")
 Q_GLOBAL_STATIC_WITH_ARGS(QString, cppTabTitle, ("C++"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, cppTabIcon, (":tabicons/images/cpp_icon.ico"))
 
-Q_GLOBAL_STATIC_WITH_ARGS(QString, cppvsToolLabel, ("Copy *.json files? for VSCode?"))
+Q_GLOBAL_STATIC_WITH_ARGS(QString, cppvsToolLabel, ("Copy *.json files for VSCode?"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, cppvsToolTip,
 						  ("Prepare to build your project on the predefined compilers package with VSCode tools"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, vscodeToolIcon, (":tabicons/images/vscode_icon.ico"))
@@ -165,7 +165,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QString, wxRadioLabel, ("wxWidgets 3.2 framework"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, qtvscodeRadioLabel, ("Qt 6.4.1 framework"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, oglRadioLabel, ("Open GL 4.5 library"))
 
-Q_GLOBAL_STATIC_WITH_ARGS(QString, makeToolLabel, ("Copy build Makefile and folders?"))
+Q_GLOBAL_STATIC_WITH_ARGS(QString, makeToolLabel, ("Copy build Makefile and folders for VSCode?"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, makeToolTip,
 						  ("Prepare to build your project with some framework or library with Makefile"))
 Q_GLOBAL_STATIC_WITH_ARGS(QString, makeToolIcon, (":tabicons/images/make_icon.ico"))
