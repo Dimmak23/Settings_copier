@@ -8,4 +8,4 @@ Users need to choose a folder with needed settings and they would be copied to s
 
 When copy process is finished user will receive appropriate message:
 
-![image](https://user-images.githubusercontent.com/36036315/217288191-93e0fb4c-4e4b-4c9f-a84d-6f2f2c967f62.png)
+![image](https://user-images.githubusercontent.com/36036315/217289357-6e0a4649-29ac-449c-a688-f85b2eedf494.png)
