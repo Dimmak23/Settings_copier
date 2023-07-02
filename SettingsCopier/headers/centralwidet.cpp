@@ -387,8 +387,11 @@ void CentralWidet::copyingEvent()
 	if (!QDir(*parsedDestination).exists())
 	{
 		std::error_code createError;
-		//		qDebug() << std::filesystem::create_directories(parsedDestination->toStdString(), createError);
+		bool* createStatus = new bool(false);
+		*createStatus = std::filesystem::create_directories(parsedDestination->toStdString(), createError);
+		//		qDebug() << *createStatus;
 		//		qDebug() << "create error message:" << createError.message().c_str();
+		delete createStatus;
 	}
 
 	// STAGE #2.2. Setup copy options
